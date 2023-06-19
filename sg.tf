@@ -9,13 +9,14 @@ terraform {
 provider "aws" {
     region ="ap-south-1"  
 } 
-resource "aws_security_group" "testsg" {
+  resource "aws_security_group" "testsg" {
   name = "testsg"
   description = "Allow HTTPS to web server"
-  vpc_id = "vpc-01011160921c8f7fe"
-  id = "sg-0fba5c861b45615f0"
+  vpc_id = vpc-01011160921c8f7fe
 
-  ingress {
+  resource "aws_security_group_rule" "sgrule" {
+    security_group_id = sg-0fba5c861b45615f0
+    type = "ingress"
     description = "HTTP ingress"
     from_port = 80
     to_port = 80
