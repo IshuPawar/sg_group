@@ -15,7 +15,6 @@ resource "aws_security_group" "testsg" {
   vpc_id = "vpc-01011160921c8f7fe"
 
   ingress {
-    type = "ingress"
     description = "HTTP ingress"
     from_port = 80
     to_port = 80
