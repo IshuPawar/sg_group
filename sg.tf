@@ -12,7 +12,7 @@ provider "aws" {
 resource "aws_security_group" "testsg" {
   name = "testsg"
   description = "Allow HTTPS to web server"
-  vpc_id = vpc-01011160921c8f7fe
+  vpc_id = "vpc-01011160921c8f7fe"
 
   ingress {
     type = "ingress"
