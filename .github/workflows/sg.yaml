@@ -2,24 +2,19 @@ on:
   push:
     branches:
       - main
-permissions: 
-      id-token: write
-      contents: read
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   apply:
-    name: terraform apply
+    name: terraform destroy
     runs-on: ubuntu-latest
     steps:
-       - uses: actions/checkout@v2
-       - uses: hashicorp/setup-terraform@v1
-         with:
-            terraform_version: "1.4.6"
-       - uses: aws-actions/configure-aws-credentials@v1
-         with:
-            role-to-assume: "arn:aws:iam::531302038408:role/iam_terra"
-            aws-region: us-east-1
+      - name: config aws
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: "arn:aws:iam::531302038408:role/iam_terra"
+          aws-region: "ap-south-1"
 
-       - run: terraform init
-       - run: terraform apply -auto-approve
-          aws ec2 modify-security-group-rule --group-id sg-0fba5c861b45615f0 --rule-id sg-0fba5c861b45615f0 --no-replace
+      - run: aws ec2 modify-security-group-rule --group-id sg-0fba5c861b45615f0 --rule-id sg-0fba5c861b45615f0 --no-replace
