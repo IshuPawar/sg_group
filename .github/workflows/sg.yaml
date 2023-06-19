@@ -17,4 +17,4 @@ jobs:
           role-to-assume: "arn:aws:iam::531302038408:role/iam_terra"
           aws-region: "ap-south-1"
 
-      - run: aws ec2 modify-security-group-rule --group-id sg-0fba5c861b45615f0 --rule-id sg-0fba5c861b45615f0 --no-replace
+      - run: aws ec2 modify-security-group-rules --group-id sg-0fba5c861b45615f0 --rule-id sg-0fba5c861b45615f0 --no-replace
